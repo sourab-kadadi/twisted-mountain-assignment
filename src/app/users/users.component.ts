@@ -31,7 +31,8 @@ export class UsersComponent {
   editableRow: any = null;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  editProcess = false
+  
   constructor(
     private usersService: UsersService, 
     private router: Router,
@@ -83,14 +84,13 @@ export class UsersComponent {
     }
   }
 
-  editProcess = false
-  onButtonClick(element: any) {
-    if (!this.editProcess) {
-      this.router.navigate(['/user-detail'], { queryParams: { id: element.id } });
-    } else {
-      alert('Please complete edit before navigating to next page')
-    }
 
+  onButtonClick(element: any) {
+    if (this.editProcess && this.editableRow !== element) {
+      alert('Please complete editing the current row before selecting another.');
+    } else if (!this.editProcess) {
+      this.router.navigate(['/user-detail'], { queryParams: { id: element.id } });
+    }
   }
 
 }

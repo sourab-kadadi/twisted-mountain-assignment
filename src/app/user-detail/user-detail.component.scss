@@ -1,0 +1,51 @@
+.user-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    padding: 20px;
+  }
+  
+  :host {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+  }
+  
+  .user-details-card {
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: box-shadow 0.3s ease-in-out;
+    border-radius: 8px; 
+  }
+
+  .user-details-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+  }
+  
+  .user-avatar {
+    background-image: url('https://via.placeholder.com/150');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  mat-card-title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  mat-card-subtitle {
+    color: gray;
+  }
+  
+
+  .back-button {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #6338b0; 
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }

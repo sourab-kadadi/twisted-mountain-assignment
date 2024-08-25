@@ -1,0 +1,24 @@
+<app-header />
+<ngx-ui-loader fgsType="rectangle-bounce-pulse-out" [fgsPosition]="'center-center'"></ngx-ui-loader>
+
+<button mat-flat-button (click)="goBack()" class="back-button">
+    <mat-icon>arrow_back</mat-icon> Back
+</button>
+
+<div class="user-details-container" *ngIf="!isLoading">
+    <mat-card class="user-details-card">
+
+        <mat-card-header>
+            <div mat-card-avatar class="user-avatar"></div>
+            <mat-card-title>{{ userData?.name }}</mat-card-title>
+            <mat-card-subtitle>ID: {{ userData?.id }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <p><strong>Language:</strong> {{ userData?.language }}</p>
+            <p><strong>Bio:</strong> {{ userData?.bio }}</p>
+            <p><strong>Version:</strong> {{ userData?.version }}</p>
+        </mat-card-content>
+
+    </mat-card>
+</div>

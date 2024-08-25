@@ -1,0 +1,48 @@
+<header class="fixed-header">
+  <app-header></app-header>
+</header>
+
+<div class="content-container" >
+  <div class="heading-list">
+    <p>User List</p>
+  </div>
+  <div class="controls table-container" >
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Search Data</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search by name or other fields">
+    </mat-form-field>
+   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container *ngFor="let column of colHeading" [matColumnDef]="column.field">
+      <mat-header-cell *matHeaderCellDef mat-sort-header><span class="header-text">{{ column.field | capitalize
+          }}</span></mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <ng-container *ngIf="editableRow !== element; else editMode">
+          {{ element[column.field] }}
+        </ng-container>
+        <ng-template #editMode>
+          <input matInput [(ngModel)]="element[column.field]" />
+        </ng-template>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef class="header-text"> Action </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button *ngIf="editableRow !== element" mat-button (click)="editProcess = true" (click)="editRow(element); $event.stopPropagation()">
+          Edit
+        </button>
+        <button *ngIf="editableRow === element" mat-button (click)="editProcess = false" (click)="saveRow(); $event.stopPropagation()">
+          Save
+        </button>
+        <button *ngIf="editableRow === element" mat-button (click)="editProcess = false" (click)="cancelEdit(); $event.stopPropagation()">
+          Cancel
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onButtonClick(row); $event.stopPropagation()"></mat-row>
+  </mat-table>
+</div>

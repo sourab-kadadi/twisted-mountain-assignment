@@ -31,13 +31,13 @@
     <ng-container matColumnDef="action">
       <mat-header-cell *matHeaderCellDef class="header-text"> Action </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button *ngIf="editableRow !== element" mat-button (click)="editProcess = true" (click)="editRow(element); $event.stopPropagation()">
+        <button *ngIf="editableRow !== element" mat-stroked-button (click)="editProcess = true" (click)="editRow(element); $event.stopPropagation()">
           Edit
         </button>
-        <button *ngIf="editableRow === element" mat-button (click)="editProcess = false" (click)="saveRow(); $event.stopPropagation()">
+        <button *ngIf="editableRow === element" mat-stroked-button (click)="editProcess = false" (click)="saveRow(); $event.stopPropagation()">
           Save
         </button>
-        <button *ngIf="editableRow === element" mat-button (click)="editProcess = false" (click)="cancelEdit(); $event.stopPropagation()">
+        <button *ngIf="editableRow === element" mat-stroked-button (click)="editProcess = false" (click)="cancelEdit(); $event.stopPropagation()">
           Cancel
         </button>
       </mat-cell>

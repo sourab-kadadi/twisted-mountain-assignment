@@ -87,6 +87,8 @@ export class UsersComponent {
   onButtonClick(element: any) {
     if (!this.editProcess) {
       this.router.navigate(['/user-detail'], { queryParams: { id: element.id } });
+    } else {
+      alert('Please complete edit before navigating to next page')
     }
 
   }

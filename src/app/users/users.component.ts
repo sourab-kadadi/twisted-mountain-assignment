@@ -40,6 +40,7 @@ export class UsersComponent {
 
   async ngOnInit() {
     this.fetchUsersData()
+    this.getData()
   }
 
   async fetchUsersData() {
@@ -93,4 +94,16 @@ export class UsersComponent {
     }
   }
 
+  getData() {
+    try {
+      const a = ''
+
+      let b = a.includes('a')
+      throw new Error()
+    } catch (e) {
+    }
+  }
+
 }
+
+

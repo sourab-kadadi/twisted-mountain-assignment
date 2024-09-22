@@ -5,7 +5,7 @@ import { MockUsersService } from '../service/mock-users.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { RouterTestingModule } from '@angular/router/testing';
+// import { RouterTestingModule } from '@angular/router/testing';
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,7 +22,7 @@ describe('UsersComponent', () => {
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
-        RouterTestingModule,
+        // RouterTestingModule,
         MatInputModule,
         MatButtonModule,
         FormsModule,
@@ -80,7 +80,8 @@ describe('UsersComponent', () => {
 
   it('should apply filter to the dataSource', () => {
     component.dataSource.filter = '';
-    component.applyFilter({ target: { value: 'Adeel' } } as Event);
+    const data = { target: { value: 'Adeel' } }
+    component.applyFilter(data as Event);
     expect(component.dataSource.filter).toBe('adeel');
   });
 

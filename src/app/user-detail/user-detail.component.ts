@@ -58,8 +58,12 @@ export class UserDetailComponent {
     }
   }
 
+  
   goBack() {
     this.router.navigate(['']); 
+    
+
+    
   }
 
 }
